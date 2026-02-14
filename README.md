@@ -1,173 +1,84 @@
-# Heart Disease Classification – ML Assignment 2
-
-##  Assignment Overview
-
-This project demonstrates a **complete end-to-end Machine Learning workflow**, including:
-
-* Data preprocessing
-* Training and evaluating multiple **classification models**
-* Comparing model performance using standard metrics
-* Building an **interactive Streamlit web application**
-* Deploying the application on **Streamlit Community Cloud (Free Tier)**
-
-The objective is to predict the **presence of heart disease** using clinical and physiological attributes.
+# ML Assignment 2 – Classification Models for Heart Disease Prediction
 
 ---
 
-## 📂 Project Structure
+## a. Problem Statement
 
-```
-Classification_Models/
-│
-├── app.py                         # Streamlit web application
-├── README.md                      # Project documentation
-├── requirements.txt               # Python dependencies
-│
-├── data/
-│   └── heart.csv                  # Dataset used for training & testing
-│
-├── model/
-│   ├── train_models.py            # Model training & evaluation script
-│   ├── model_comparison.csv       # Performance comparison of all models
-│   └── saved_models/              # Trained ML models (.pkl files)
-│       ├── Logistic Regression.pkl
-│       ├── Decision Tree.pkl
-│       ├── KNN.pkl
-│       ├── Naive Bayes.pkl
-│       ├── Random Forest.pkl
-│       └── XGBoost.pkl
-```
+The objective of this assignment is to build and evaluate multiple **machine learning classification models** to predict the **presence of heart disease** using clinical and physiological parameters.
+The project also aims to demonstrate an **end-to-end ML workflow**, including data preprocessing, model training, evaluation, comparison, and deployment through an interactive web application.
 
 ---
 
-## 📊 Dataset Description
+## b. Dataset Description  **[1 Mark]**
 
 * **Dataset Name:** Heart Disease Dataset (`heart.csv`)
 * **Target Variable:** `num`
 
   * `0` → No heart disease
   * `1` → Presence of heart disease
-* **Features:**
-  Includes age, sex, chest pain type, resting blood pressure, cholesterol, ECG results, maximum heart rate, exercise-induced angina, and other clinical indicators.
+* **Number of Records:** 920
+* **Number of Features:** 15 input features + 1 target column
+* **Feature Types:**
 
-Only **small test datasets** are uploaded through the Streamlit interface, as required by the **Streamlit Community Cloud free-tier limitations**.
+  * Numerical (age, cholesterol, resting blood pressure, etc.)
+  * Categorical (sex, chest pain type, ECG results, etc.)
+
+The dataset contains clinical attributes commonly used in cardiovascular risk assessment.
+Only **test datasets** are uploaded in the Streamlit app, in compliance with Streamlit Community Cloud free-tier limitations.
 
 ---
 
-## 🤖 Machine Learning Models Implemented
+## c. Models Used and Evaluation  **[6 Marks]**
 
-The following classification models were implemented, trained, and evaluated:
+The following **six classification models** were implemented, trained, and evaluated:
 
 1. Logistic Regression
-2. Decision Tree Classifier
-3. K-Nearest Neighbors (KNN)
+2. Decision Tree
+3. K-Nearest Neighbors (kNN)
 4. Naive Bayes
-5. Random Forest Classifier
-6. XGBoost Classifier
+5. Random Forest (Ensemble)
+6. XGBoost (Ensemble)
 
-All models follow a consistent preprocessing pipeline and are saved for reuse within the Streamlit application.
+### 🔹 Model Comparison Table
 
----
-
-## 📈 Model Evaluation Metrics
-
-Each model is evaluated using multiple performance metrics:
-
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* ROC-AUC
-* Matthews Correlation Coefficient (MCC)
-
-A consolidated comparison of all models is available in:
-
-```
-model/model_comparison.csv
-```
+| ML Model Name            | Accuracy | AUC   | Precision | Recall | F1 Score | MCC   |
+| ------------------------ | -------- | ----- | --------- | ------ | -------- | ----- |
+| Logistic Regression      | 0.815    | 0.894 | 0.827     | 0.843  | 0.835    | 0.625 |
+| Decision Tree            | 0.739    | 0.731 | 0.745     | 0.804  | 0.774    | 0.469 |
+| kNN                      | 0.848    | 0.876 | 0.885     | 0.833  | 0.859    | 0.696 |
+| Naive Bayes              | 0.826    | 0.884 | 0.830     | 0.863  | 0.846    | 0.647 |
+| Random Forest (Ensemble) | 0.826    | 0.919 | 0.850     | 0.833  | 0.842    | 0.649 |
+| XGBoost (Ensemble)       | 0.826    | 0.904 | 0.837     | 0.853  | 0.845    | 0.647 |
 
 ---
 
-## 🖥️ Streamlit Web Application Features
+## d. Model Performance Observations  **[3 Marks]**
 
-The Streamlit application fulfills **all required assignment criteria**.
+| ML Model Name            | Observation about Model Performance                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| Logistic Regression      | Provided stable and interpretable results with good overall balance, but slightly lower performance compared to ensemble models. |
+| Decision Tree            | Showed lower accuracy and MCC, indicating overfitting and sensitivity to data variations.                                        |
+| kNN                      | Achieved the **highest accuracy and MCC**, performing well due to effective neighborhood-based classification.                   |
+| Naive Bayes              | Performed consistently with strong recall, indicating good sensitivity in detecting heart disease cases.                         |
+| Random Forest (Ensemble) | Delivered strong AUC and balanced performance, benefiting from ensemble averaging and reduced overfitting.                       |
+| XGBoost (Ensemble)       | Achieved high AUC and recall, demonstrating strong predictive power and robustness on the dataset.                               |
 
-### ✅ Implemented Features
+---
 
-* CSV dataset upload option (test data only)
-* Model selection dropdown (multiple trained models)
-* Prediction on uploaded dataset
-* Display of evaluation metrics
+## Step 6: Deployment on Streamlit Community Cloud
+
+The trained models were deployed using an **interactive Streamlit web application** on **Streamlit Community Cloud (Free Tier)**.
+
+### 🔹 Application Features:
+
+* CSV dataset upload (test data only)
+* Model selection dropdown
+* Evaluation metrics display
 * Confusion matrix visualization
 * Classification report output
 
-The application enables interactive testing and comparison of different classification models.
+### 🔗 Live Application Link:
 
----
+👉 **[https://classificationmodels-karthikaa-assignment.streamlit.app/](https://classificationmodels-karthikaa-assignment.streamlit.app/)**
 
-## 🌐 Live Application (Deployed)
 
-🔗 **Streamlit App URL:**
-👉 [https://classificationmodels-karthikaa-assignment.streamlit.app/](https://classificationmodels-karthikaa-assignment.streamlit.app/)
-
-This link can be used directly for assignment evaluation.
-
----
-
-## ▶️ How to Run Locally (Optional)
-
-To run the application locally:
-
-```bash
-# Clone the repository
-git clone https://github.com/Karthikaa-Kothandapani/Classification_Models.git
-cd Classification_Models
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate   # Linux / Mac
-# venv\Scripts\activate    # Windows
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the Streamlit app
-streamlit run app.py
-```
-
----
-
-## 🛠️ Technologies Used
-
-* Python 3
-* Scikit-learn
-* XGBoost
-* Pandas, NumPy
-* Matplotlib / Seaborn
-* Streamlit
-* Git & GitHub
-
----
-
-## 🎯 Learning Outcomes
-
-This assignment demonstrates:
-
-* End-to-end machine learning pipeline development
-* Model evaluation and comparison
-* Handling categorical and missing data
-* Building interactive ML dashboards
-* Deploying ML applications using cloud platforms
-
----
-
-## ✅ Assignment Compliance Checklist
-
-✔ Multiple classification models implemented
-✔ Model evaluation and comparison
-✔ Interactive Streamlit web application
-✔ Dataset upload functionality
-✔ Model selection dropdown
-✔ Confusion matrix and classification report
-✔ Deployed on Streamlit Community Cloud (Free Tier)
-✔ Shareable public application link
