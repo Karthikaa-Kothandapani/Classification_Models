@@ -9,7 +9,7 @@ The project also aims to demonstrate an **end-to-end ML workflow**, including da
 
 ---
 
-## b. Dataset Description  **[1 Mark]**
+## b. Dataset Description 
 
 * **Dataset Name:** Heart Disease Dataset (`heart.csv`)
 * **Target Variable:** `num`
@@ -28,7 +28,7 @@ Only **test datasets** are uploaded in the Streamlit app, in compliance with Str
 
 ---
 
-## c. Models Used and Evaluation  **[6 Marks]**
+## c. Models Used and Evaluation 
 
 The following **six classification models** were implemented, trained, and evaluated:
 
@@ -52,7 +52,7 @@ The following **six classification models** were implemented, trained, and evalu
 
 ---
 
-## d. Model Performance Observations  **[3 Marks]**
+## d. Model Performance Observations 
 
 | ML Model Name            | Observation about Model Performance                                                                                              |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
